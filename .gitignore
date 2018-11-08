@@ -1,6 +1,9 @@
 ### Project related ###
 
 /modules
+/internals
+/data
+/tmp
 /dist
 
 # Created by https://www.gitignore.io/api/node
@@ -66,4 +69,5 @@ typings/
 .env
 
 .idea
+.vscode
 # End of https://www.gitignore.io/api/node

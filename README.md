@@ -1,4 +1,4 @@
-[![Codefresh build status](https://g.codefresh.io/api/badges/build?repoOwner=FirstLegoLeague&repoName=Launcher&branch=master&pipelineName=Launcher&accountName=2roy999&type=cf-1)](https://g.codefresh.io/repositories/FirstLegoLeague/Launcher/builds?filter=trigger:build;branch:master;service:5974fb50aa64aa00013419e3~Launcher)
+[![Build status](https://ci.appveyor.com/api/projects/status/0y2bsm8ku11q6vyt?svg=true)](https://ci.appveyor.com/project/2roy999/launcher-8a1fe)
 [![David Dependency Status](https://david-dm.org/FirstLegoLeague/Launcher.png)](https://david-dm.org/FirstLegoLeague/Launcher)
 [![David Dev Dependency Status](https://david-dm.org/FirstLegoLeague/Launcher/dev-status.png)](https://david-dm.org/FirstLegoLeague/Launcher#info=devDependencies)
 
@@ -64,6 +64,11 @@ Development
     If you are missing it anyway you can use one of the following option:
     - [cygwin](http://www.cygwin.com/)
     - [MinGw](http://www.mingw.org/)
+- Python
+  - Install Python 2.7
+- Microsoft Build Tools
+  - Download from https://www.microsoft.com/en-in/download/details.aspx?id=48159
+  - Install BuildTools_Full.exe
 
 \*Optional - This is needed only for the building of the installation files
 
@@ -71,6 +76,9 @@ Development
 
 - Clone the repository
 - Run from cmd `yarn install`
+- Run from cmd `yarn get all` - this would download all external
+  modules for the launcher. Use `yarn get --help` to choose the modules
+  to download. Do this if you know that only specific modules have been updated.
 
 ### Run Program Locally ###
 The simple way run:

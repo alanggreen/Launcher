@@ -1,4 +1,14 @@
-extends: standard
+extends:
+- standard
+
+globals:
+  __static: true
+
+parserOptions:
+  sourceType: module
+
+plugins:
+  - html
 
 rules:
   arrow-parens:
@@ -7,8 +17,10 @@ rules:
   - requireForBlockBody: false
   no-shadow: warn
   no-var: warn
+  object-curly-spacing: [ warn, always ]
   prefer-arrow-callback: warn
   prefer-const: warn
+
 
   import/newline-after-import: warn
   import/no-absolute-path: warn
@@ -23,13 +35,18 @@ rules:
     - parent
     newlines-between: always-and-inside-groups
 
-  node/exports-style:
+  node/exports-style: [ warn, exports ]
+  node/no-unsupported-features:
   - warn
-  - exports
-  node/no-unsupported-features: warn
+  - ignores:
+    - modules
   node/shebang: warn
 
-  promise/catch-or-return: warn
+  promise/catch-or-return:
+  - warn
+  - terminationMethod:
+    - catch
+    - asCallback
   promise/no-callback-in-promise: warn
   promise/no-native: warn
   promise/no-return-wrap: warn

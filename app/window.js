@@ -1,11 +1,15 @@
+'use strict'
+
 const electron = require('electron')
 // Module to control application life.
 const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
-
+require('electron-debug')({ enabled: true })
 const path = require('path')
 const url = require('url')
+
+const pjson = require('../package.json')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -13,24 +17,29 @@ const url = require('url')
 exports.mainWindow = null
 exports.buildMainWindow = () => {
   // Create the browser window.
-  exports.mainWindow = new BrowserWindow({width: 800, height: 600, icon: getIcon()})
+  exports.mainWindow = new BrowserWindow({ width: 600, height: 500, icon: getIcon() })
   // Disable the menubar
   exports.mainWindow.setMenu(null)
-                     
+  // Setting the window title
+  exports.mainWindow.setTitle('FIRST LEGO League scoring v' + pjson.version)
   // and load the index.html of the app.
   exports.mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+    pathname: path.join(__dirname, '../ui/index.html'),
     protocol: 'file:',
     slashes: true
   }))
 
-
-  // Emitted when the window is closed.
-  exports.mainWindow.on('closed', function () {
+  // Emitted after the window is closed, in any way shape or form
+  exports.mainWindow.on('closed', () => {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     exports.mainWindow = null
+  })
+
+  // Emitted before the window is closed by the user or using the the close() function
+  exports.mainWindow.on('close', () => {
+    app.quit()
   })
 }
 
@@ -59,6 +68,6 @@ exports.buildMainWindow = () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-function getIcon() {
+function getIcon () {
   return path.join(__dirname, 'images', 'icon.png')
 }
